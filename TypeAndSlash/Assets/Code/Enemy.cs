@@ -1,70 +1,76 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 namespace Code
 {
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private Words _words;
         [SerializeField] private TextMeshProUGUI _text;
-        [SerializeField] private Transform _target;
-        [SerializeField] private float _moveSpeed = 5.0f;
+        [SerializeField] private SlashController _slashController;
+        [SerializeField] private float _moveSpeed = 10f;
+        private EnemyKiller _enemyKiller;
+        
+        public string CurrentWord => _currentWord;
+        public event Action<Enemy> OnWordFinished;
+        public event Action<Enemy> OnDeath;
+
         private string _currentWord;
+
+        private bool _isGrounded;
 
         private void OnEnable()
         {
-            AssignAWord();
+            if (_slashController == null)
+                _slashController = FindAnyObjectByType<SlashController>();
+
+            _enemyKiller = FindAnyObjectByType<EnemyKiller>();
+        }
+
+        public void AssignAWord(string word)
+        {
+            _currentWord = word;
+            _text.text = _currentWord;
+        }
+
+        public void Damage(char letter)
+        {
+            if (_currentWord.Length == 0) return;
+            if (char.ToLowerInvariant(_currentWord[0]) != letter) return;
+
+            _currentWord = _currentWord.Substring(1);
+            _text.text = _currentWord;
+            _slashController.SetTransform(transform.position);
+
+            if (_currentWord.Length == 0)
+            {
+                OnWordFinished?.Invoke(this);
+                OnDeath?.Invoke(this);
+                gameObject.SetActive(false);
+            }
         }
 
         private void Update()
         {
-            foreach (KeyControl key in Keyboard.current.allKeys)
-            {
-                if (key != null && key.wasPressedThisFrame)
-                {
-                    string keyName = key.displayName;
-
-                    if (keyName.Length == 1)
-                    {
-                        char letter = keyName.ToLower()[0];
-                        Damage(letter);
-                    }
-                }
-            }
-            
-            // Move();
+            GoToTarget();
         }
 
-
-        public void Damage(char letter)
+        private void GoToTarget()
         {
-            if (_currentWord.Length > 0 && char.ToLowerInvariant(_currentWord[0]) == letter)
+            if (_enemyKiller != null && _isGrounded)
             {
-                _currentWord = _currentWord.Substring(1);
-                _text.text = _currentWord;
-
-                if (_currentWord.Length == 0)
-                {
-                    gameObject.SetActive(false);
-                }
+                transform.position = Vector2.MoveTowards(transform.position, _enemyKiller.transform.position, _moveSpeed * Time.deltaTime);
             }
         }
 
-        private void Move()
+        public void KnockBackUp(float knockBackStr)
         {
-            transform.position = Vector2.MoveTowards(transform.position, _target.position, _moveSpeed * Time.deltaTime);
+            transform.position += Vector3.up * knockBackStr;
         }
 
-        private void AssignAWord()
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            _currentWord = _words.GetRandomWords();
-            if (_currentWord != String.Empty)
-            {
-                _text.text = _currentWord;
-            }
+            _isGrounded = true;
         }
     }
 }
