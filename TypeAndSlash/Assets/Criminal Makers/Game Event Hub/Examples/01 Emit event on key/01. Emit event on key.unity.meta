@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 042015c78e08f59429a6eef180498221
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/01 Emit event on key/01.
+    Emit event on key.unity
+  uploadId: 780195

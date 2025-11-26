@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3f8436f52eef11240aac1598f1917bf5
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Tools/Tester.md
+  uploadId: 780195

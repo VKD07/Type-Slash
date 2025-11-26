@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8fa65fe92dd71de4197f8aece8d24845
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Troubleshooting/Intro.md
+  uploadId: 780195

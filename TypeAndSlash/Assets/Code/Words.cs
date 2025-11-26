@@ -6,18 +6,37 @@ namespace Code
     [CreateAssetMenu(fileName = "Words", menuName = "SO/New Words")]
     public class Words : ScriptableObject
     {
-        [SerializeField] private List<string> defaultWords = new List<string>
+        [SerializeField] private List<string> _defaultWords = new List<string>
         {
-            "dash", "jump", "zap",  "cut",  "hit",
-            "run",  "pop",  "slam", "rush", "bolt",
-            "fire", "wind", "fury", "rage", "claw",
-            "bite", "glow", "bash", "kick", "stab",
-            "peek", "zoom", "whip", "warp", "snap",
-            "spin", "burn", "zap",  "tiny", "lift"
+            "arch", // A
+            "bolt", // B
+            "chop", // C
+            "dash", // D
+            "ember",// E (if you need EXACT 4 letters, use "echo")
+            "flare",// F (4 letters alt: "fend")
+            "glow", // G
+            "heal", // H
+            "iron", // I
+            "jolt", // J
+            "kick", // K
+            "lure", // L
+            "mend", // M
+            "nail", // N
+            "omen", // O
+            "pier", // P
+            "quip", // Q
+            "rush", // R
+            "stab", // S
+            "twin", // T
+            "undo", // U
+            "vent", // V
+            "warp", // W
+            "xeno", // X (valid game-friendly word)
+            "yank", // Y
+            "zince"  // Z (or "zinc" if you want true dictionary)
         };
 
         [SerializeField] private List<string> runtimeWords = new List<string>();
-
 
         private void OnEnable()
         {
@@ -55,7 +74,7 @@ namespace Code
 
         private void ResetToDefault()
         {
-            runtimeWords = new List<string>(defaultWords);
+            runtimeWords = new List<string>(_defaultWords);
         }
     }
 }

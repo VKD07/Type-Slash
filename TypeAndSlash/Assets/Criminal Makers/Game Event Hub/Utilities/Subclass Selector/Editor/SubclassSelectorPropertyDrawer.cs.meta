@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: c33c957eab804505beccc9ab2b56d2a5
+timeCreated: 1734965107
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Utilities/Subclass Selector/Editor/SubclassSelectorPropertyDrawer.cs
+  uploadId: 780195

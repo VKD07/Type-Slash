@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 945a522241de76e42a7bf3e6cbad3bea
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Troubleshooting/Troubleshooting.asset
+  uploadId: 780195

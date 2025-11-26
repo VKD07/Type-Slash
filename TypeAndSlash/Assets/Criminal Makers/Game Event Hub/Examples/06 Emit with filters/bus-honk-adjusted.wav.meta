@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: a0127e6c618e6424fad6f5f1d719cdf7
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 7
+  defaultSettings:
+    serializedVersion: 2
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+    preloadAudioData: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/06 Emit with filters/bus-honk-adjusted.wav
+  uploadId: 780195

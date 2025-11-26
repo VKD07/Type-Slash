@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 0073bcb529ef4582963e1c96929ea528
+timeCreated: 1728318729
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Core/Attributes/AbstractAttributeBound.cs
+  uploadId: 780195

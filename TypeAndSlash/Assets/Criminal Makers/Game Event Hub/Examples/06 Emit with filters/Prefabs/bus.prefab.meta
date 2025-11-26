@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fb6338277fc4c174f8f6b8536a395cc2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/06 Emit with filters/Prefabs/bus.prefab
+  uploadId: 780195

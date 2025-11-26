@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5d4836123e9a35443ab9a82c1cdd58ad
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/07 Animator publish/StepAnnouncer.cs
+  uploadId: 780195

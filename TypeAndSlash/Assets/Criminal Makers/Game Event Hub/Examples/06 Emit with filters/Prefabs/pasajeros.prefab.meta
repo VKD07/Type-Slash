@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 580cd868fa423974fade99c255f54c24
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/06 Emit with filters/Prefabs/pasajeros.prefab
+  uploadId: 780195

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5aaea7c5c0738404381a88285a26ab78
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Quick
+    Start/Subscribe to the event.md
+  uploadId: 780195

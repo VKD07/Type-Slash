@@ -1,0 +1,11 @@
+﻿fileFormatVersion: 2
+guid: 1cb335a593ce47bf8cd34b875ec70e08
+timeCreated: 1738098914
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Editor Addons/Editor/Right click
+    actions/GameEventHubRightClickActions.cs
+  uploadId: 780195

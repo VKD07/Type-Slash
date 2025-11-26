@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 972064b5029c63846a7122a3b7ecedff
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Demo/GameEventHubDemo.unity
+  uploadId: 780195

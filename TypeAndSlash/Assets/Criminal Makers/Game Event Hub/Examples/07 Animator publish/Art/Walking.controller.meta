@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ab89a5ecc44f5084cb230fc053ddda68
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/07 Animator publish/Art/Walking.controller
+  uploadId: 780195

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 84a0679a12efbe3479318443dacaf478
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Subscriber/Priority.md
+  uploadId: 780195

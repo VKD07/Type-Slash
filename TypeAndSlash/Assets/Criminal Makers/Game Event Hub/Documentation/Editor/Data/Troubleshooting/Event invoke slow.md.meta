@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7ada63e27ab8eee4c8d5b9908948d356
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Troubleshooting/Event
+    invoke slow.md
+  uploadId: 780195

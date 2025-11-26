@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: fcc8a58bd5f8486baec7d151b42d61c2
+timeCreated: 1734120002
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Core/Filters/SameSceneAsEmitter.cs
+  uploadId: 780195

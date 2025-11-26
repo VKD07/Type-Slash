@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 89e9fe637ff84ca409dabe310c0a3de3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Quick
+    Start/Quick Start.asset
+  uploadId: 780195

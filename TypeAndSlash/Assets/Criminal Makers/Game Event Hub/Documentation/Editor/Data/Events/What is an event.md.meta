@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a703d5e6e4a22f047a3c0b7ea7a5a7d7
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Events/What
+    is an event.md
+  uploadId: 780195

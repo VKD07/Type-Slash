@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: e44cd91fb97f44389c85a56ff2c2a6f1
+timeCreated: 1736124997
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Tools/Editor/Log Tool/Lines/DynamicSubscriberUnboundLine.cs
+  uploadId: 780195

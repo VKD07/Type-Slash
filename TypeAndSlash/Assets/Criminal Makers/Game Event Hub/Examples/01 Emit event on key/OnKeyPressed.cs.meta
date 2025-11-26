@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: b59b637e101442deb94f2e995751d3da
+timeCreated: 1734131438
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/01 Emit event on key/OnKeyPressed.cs
+  uploadId: 780195

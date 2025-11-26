@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 namespace Code
 {
@@ -11,7 +12,6 @@ namespace Code
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private EnemySpawner _enemySpawner;
         
-        [SerializeField] private TextMeshProUGUI _scoreText;
 
         private int _currentScore = 0;
         private Enemy _targetEnemy;
@@ -28,7 +28,6 @@ namespace Code
         {
             KillEnemy();
             FollowTarget();
-            _scoreText.text = _currentScore.ToString();
         }
 
         private void KillEnemy()

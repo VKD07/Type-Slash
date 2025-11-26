@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c304426866abdf341a69c63ede409e51
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/02 Emit delayed/02 Emit
+    Delayed.unity
+  uploadId: 780195

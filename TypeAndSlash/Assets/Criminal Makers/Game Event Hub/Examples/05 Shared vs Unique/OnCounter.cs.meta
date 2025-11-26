@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 75d141b1ed074ba7942f89777806a405
+timeCreated: 1734133684
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/05 Shared vs Unique/OnCounter.cs
+  uploadId: 780195

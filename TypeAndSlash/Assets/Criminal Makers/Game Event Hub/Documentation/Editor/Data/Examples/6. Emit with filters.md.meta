@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4440912bd90e6e64298ac64b4896d3b4
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Examples/6.
+    Emit with filters.md
+  uploadId: 780195

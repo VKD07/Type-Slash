@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 1f736b8542f347a8891e2d977bf93c56
+timeCreated: 1734826523
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Utilities/Animator/Editor/PublishOnPlaybackEditor.cs
+  uploadId: 780195

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 052d938726904390b8e46faef5d07e8a
+timeCreated: 1741826559
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/08 Channels/OnHealthChange.cs
+  uploadId: 780195

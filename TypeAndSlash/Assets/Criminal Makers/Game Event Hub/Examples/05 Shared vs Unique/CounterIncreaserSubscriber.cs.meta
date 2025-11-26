@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 60613e7781004fefbd73f90b252028bb
+timeCreated: 1734133745
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/05 Shared vs Unique/CounterIncreaserSubscriber.cs
+  uploadId: 780195

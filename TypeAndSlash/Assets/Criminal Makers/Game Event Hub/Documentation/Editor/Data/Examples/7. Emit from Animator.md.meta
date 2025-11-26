@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 29f797965272a1548892d938384a3078
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Examples/7.
+    Emit from Animator.md
+  uploadId: 780195

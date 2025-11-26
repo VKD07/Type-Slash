@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 5ac46dde0ae7430595c5a877b2b4861c
+timeCreated: 1738095502
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Utilities/Scriptable Object/Editor/GameEventSoInspector.cs
+  uploadId: 780195

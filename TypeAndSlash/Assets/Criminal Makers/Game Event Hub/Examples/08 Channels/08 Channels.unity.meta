@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c2a275ccdbae9d44b9c325d302c77122
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/08 Channels/08 Channels.unity
+  uploadId: 780195

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: f244b027aaa3b7146aa98b48794b6d53
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Editor Addons/Editor/Hierarchy
+    actions/CreateGameEventHub.cs
+  uploadId: 780195

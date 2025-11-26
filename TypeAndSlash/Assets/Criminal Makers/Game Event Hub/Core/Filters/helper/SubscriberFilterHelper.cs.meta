@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: b192d5e618384319a7499d3ffce00e4a
+timeCreated: 1734120854
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Core/Filters/helper/SubscriberFilterHelper.cs
+  uploadId: 780195

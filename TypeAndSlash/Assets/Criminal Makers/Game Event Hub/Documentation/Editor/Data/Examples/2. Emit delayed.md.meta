@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c9be7fe183b61eb4fa416da7775d95ef
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Examples/2.
+    Emit delayed.md
+  uploadId: 780195

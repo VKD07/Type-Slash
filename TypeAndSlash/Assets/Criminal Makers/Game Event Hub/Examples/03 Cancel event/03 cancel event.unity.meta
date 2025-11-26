@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1ff2bd1f2010e324d8216d8f688d4f51
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/03 Cancel event/03 cancel
+    event.unity
+  uploadId: 780195

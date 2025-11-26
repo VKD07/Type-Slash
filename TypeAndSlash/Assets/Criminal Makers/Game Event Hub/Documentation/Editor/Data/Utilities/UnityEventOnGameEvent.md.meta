@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a72a6c9f03b13344cb152f9cdc9f3cc2
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Utilities/UnityEventOnGameEvent.md
+  uploadId: 780195

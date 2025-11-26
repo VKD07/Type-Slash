@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e865c4c6474e9ee4a93187b9553da1f8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/07 Animator publish/OnStepRight.asset
+  uploadId: 780195

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 1dc63b0fcae64e36a764b3478cd6aeda
+timeCreated: 1734134374
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/06 Emit with filters/Passenger2.cs
+  uploadId: 780195

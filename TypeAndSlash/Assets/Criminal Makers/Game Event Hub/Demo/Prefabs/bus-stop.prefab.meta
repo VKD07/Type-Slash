@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 224ea85e49b073b419b1496d2bbba145
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Demo/Prefabs/bus-stop.prefab
+  uploadId: 780195

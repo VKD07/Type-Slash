@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: df14ced59c3c48a8afdaa0aa0df27f66
+timeCreated: 1734134585
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/06 Emit with filters/OnBusHonk.cs
+  uploadId: 780195

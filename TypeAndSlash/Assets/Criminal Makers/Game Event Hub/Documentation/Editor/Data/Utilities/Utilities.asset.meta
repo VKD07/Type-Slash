@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e3d2aadc5b9296449a720f634f57173e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Utilities/Utilities.asset
+  uploadId: 780195

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b4e874c25c0f2d94eb9e276b84aed77a
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Subscriber/Dynamic
+    example.md
+  uploadId: 780195

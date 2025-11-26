@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 0f60b07fb95f4245949931feff8ad404
+timeCreated: 1734132270
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/03 Cancel event/OnKeyPressCancel.cs
+  uploadId: 780195

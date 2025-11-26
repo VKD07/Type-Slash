@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a75edea565c23c649abd51633353f9fe
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Utilities/Subclass
+    Selector.md
+  uploadId: 780195

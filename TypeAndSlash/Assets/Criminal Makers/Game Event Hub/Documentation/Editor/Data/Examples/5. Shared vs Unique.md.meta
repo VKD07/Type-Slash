@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e86f4bd6fcb518e42b3ef92abcd4ceb6
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Examples/5.
+    Shared vs Unique.md
+  uploadId: 780195

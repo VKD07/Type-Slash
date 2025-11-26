@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Code.GameEvents;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -54,12 +55,6 @@ namespace Code
             }
         }
 
-        private bool IsVisible(Enemy enemy)
-        {
-            Vector3 vp = Camera.main.WorldToViewportPoint(enemy.transform.position);
-            return vp.x > 0 && vp.x < 1 && vp.y > 0 && vp.y < 1 && vp.z > 0;
-        }
-
         public bool HandleTypedLetter(char letter, Player player)
         {
             if (_player == null)
@@ -86,11 +81,6 @@ namespace Code
                         continue;
                     }
 
-                    if (!IsVisible(e))
-                    {
-                        continue;
-                    }
-
                     string w = e.CurrentWord;
                     if (w.Length > 0 && char.ToLower(w[0]) == letter)
                     {
@@ -106,6 +96,7 @@ namespace Code
                 _lockedEnemy.KnockBackUp(_knockBackForce);
                 _lockedEnemy.Damage(letter);
                 _player.SetTargetEnemy(_lockedEnemy);
+                new OnDamageEnemyEvent().Publish(this);
                 return true;
             }
 

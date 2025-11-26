@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 75992a32b05244feafc6ca86dedfd33b
+timeCreated: 1731444245
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Core/System Events/OnEventSystemStarted.cs
+  uploadId: 780195

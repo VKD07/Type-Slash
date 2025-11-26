@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 57535470809ab6c47bd69b02abe5c6ff
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Tools/Log.md
+  uploadId: 780195

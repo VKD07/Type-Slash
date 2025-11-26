@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 61becb303db144ba98de1adeb13c9975
+timeCreated: 1734133790
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/05 Shared vs Unique/CounterEventEmitter.cs
+  uploadId: 780195

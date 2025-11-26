@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 6f00a23d83404c808c02424699dca5d0
+timeCreated: 1736127786
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Tools/Editor/Log Tool/Lines/EventRaisedLine.cs
+  uploadId: 780195

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 299adb785733e264b803d56f9cb96890
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Documentation/Editor/Data/Troubleshooting/Game
+    Event Hub is not in the scene.md
+  uploadId: 780195

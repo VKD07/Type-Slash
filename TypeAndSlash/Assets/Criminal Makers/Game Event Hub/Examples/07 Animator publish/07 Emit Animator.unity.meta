@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d6d5c793b2e59f14a8623436355d946c
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/07 Animator publish/07
+    Emit Animator.unity
+  uploadId: 780195

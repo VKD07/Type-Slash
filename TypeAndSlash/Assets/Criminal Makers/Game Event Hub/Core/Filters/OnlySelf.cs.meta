@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 4dce8c14257d491286ebf559f786cc99
+timeCreated: 1739289558
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Core/Filters/OnlySelf.cs
+  uploadId: 780195

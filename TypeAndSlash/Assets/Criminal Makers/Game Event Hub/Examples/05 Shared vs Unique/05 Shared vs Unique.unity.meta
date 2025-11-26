@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d9daa64edaba1614b89886315b57b2c1
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 303196
+  packageName: Game Event Hub
+  packageVersion: 1.5.0
+  assetPath: Assets/Criminal Makers/Game Event Hub/Examples/05 Shared vs Unique/05
+    Shared vs Unique.unity
+  uploadId: 780195
