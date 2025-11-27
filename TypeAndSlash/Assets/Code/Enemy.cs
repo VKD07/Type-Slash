@@ -1,76 +1,89 @@
-﻿using System;
+﻿using Code.GameEvents;
+using Code.Interface;
 using TMPro;
 using UnityEngine;
 
 namespace Code
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IKnockable, IDamageable
     {
         [SerializeField] private TextMeshProUGUI _text;
-        [SerializeField] private SlashController _slashController;
         [SerializeField] private float _moveSpeed = 10f;
+
         private EnemyKiller _enemyKiller;
-        
-        public string CurrentWord => _currentWord;
-        public event Action<Enemy> OnWordFinished;
-        public event Action<Enemy> OnDeath;
-
+        private string _assignedWord;
         private string _currentWord;
-
         private bool _isGrounded;
+        
+
+        public string AssignedWord => _assignedWord;
+        public string CurrentWord => _currentWord;
 
         private void OnEnable()
         {
-            if (_slashController == null)
-                _slashController = FindAnyObjectByType<SlashController>();
-
             _enemyKiller = FindAnyObjectByType<EnemyKiller>();
         }
 
         public void AssignAWord(string word)
         {
+            _assignedWord = word;
             _currentWord = word;
             _text.text = _currentWord;
         }
 
-        public void Damage(char letter)
+        public void AssignNewWord(string newWord)
         {
-            if (_currentWord.Length == 0) return;
-            if (char.ToLowerInvariant(_currentWord[0]) != letter) return;
-
-            _currentWord = _currentWord.Substring(1);
+            _currentWord = newWord;
             _text.text = _currentWord;
-            _slashController.SetTransform(transform.position);
+        }
 
+        public void TakeDamageBasedOnLetter(char letter)
+        {
             if (_currentWord.Length == 0)
             {
-                OnWordFinished?.Invoke(this);
-                OnDeath?.Invoke(this);
-                gameObject.SetActive(false);
+                return;
             }
+
+            if (char.ToLowerInvariant(_currentWord[0]) != letter)
+            {
+                return;
+            }
+            TakeDamage(1);
         }
 
         private void Update()
         {
-            GoToTarget();
-        }
-
-        private void GoToTarget()
-        {
             if (_enemyKiller != null && _isGrounded)
             {
-                transform.position = Vector2.MoveTowards(transform.position, _enemyKiller.transform.position, _moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(
+                    transform.position,
+                    _enemyKiller.transform.position,
+                    _moveSpeed * Time.deltaTime
+                );
             }
-        }
-
-        public void KnockBackUp(float knockBackStr)
-        {
-            transform.position += Vector3.up * knockBackStr;
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
             _isGrounded = true;
+        }
+
+        public void KnockBack(Vector3 dir, float strength)
+        {
+            transform.position += dir * strength;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            int remove = Mathf.Min(damage, _currentWord.Length);
+            _currentWord = _currentWord.Substring(remove);
+            _text.text = _currentWord;
+
+            if (_currentWord.Length == 0)
+            {
+                new OnEnemyKilledEvent(this).Publish(this);
+                gameObject.SetActive(false);
+            }
         }
     }
 }
