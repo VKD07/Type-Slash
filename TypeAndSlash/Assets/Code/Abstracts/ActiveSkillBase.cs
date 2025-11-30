@@ -9,14 +9,17 @@ namespace Code.Abstracts
         [SerializeField] protected float cooldown = 5f;
 
         protected float cooldownTimer = 0f;
-
+        
         public Key ActivationKey => key;
+
+        public float GetNormalizedCooldownTimer;
 
         public override void Tick(float deltaTime)
         {
             if (cooldownTimer > 0f)
             {
                 cooldownTimer -= deltaTime;
+                GetNormalizedCooldownTimer = cooldownTimer/ cooldown;
             }
         }
 

@@ -5,9 +5,9 @@ namespace Code.Abstracts
 {
     public abstract class SkillBase : ScriptableObject, ISkill
     {
-        [SerializeField] private Sprite _sprite;
-        [SerializeField] protected string _skillName;
-        [SerializeField] protected string _description;
+        public Sprite Sprite;
+        public string SkillName;
+        public string Description;
 
         protected SkillContext _context;
 
@@ -16,12 +16,28 @@ namespace Code.Abstracts
             _context = ctx;
         }
 
-        public virtual void OnAcquire() { }
-        public virtual void OnRemove() { }
-        public virtual void Tick(float deltaTime) { }
-        public virtual void Tick(float deltaTime, float duration) { }
+        public virtual void OnAcquire()
+        {
+        }
 
-        public virtual void Activate() { }
-        public virtual void Deactivate() { }
+        public virtual void OnRemove()
+        {
+        }
+
+        public virtual void Tick(float deltaTime)
+        {
+        }
+
+        public virtual void Tick(float deltaTime, float duration)
+        {
+        }
+
+        public virtual void Activate()
+        {
+        }
+
+        public virtual void Deactivate()
+        {
+        }
     }
 }

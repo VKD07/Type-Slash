@@ -11,12 +11,13 @@ namespace Code
     public class SkillHandler : MonoBehaviour
     {
         [SerializeField] private List<SkillBase> startingSkills;
-
+        [SerializeField] private ActiveSkillViewController _activeSkillViewController;
         private readonly List<SkillBase> _activeSkills = new();
+
         private SkillContext _context;
 
 
-        private void Awake()
+        private void OnEnable()
         {
             _context = new SkillContext
             {
@@ -48,7 +49,7 @@ namespace Code
                 if (skill is ActiveSkillBase activeSkill)
                 {
                     Key key = activeSkill.ActivationKey;
-
+                    _activeSkillViewController.UpdateSkillCooldown(activeSkill.SkillName, activeSkill.GetNormalizedCooldownTimer);
                     if (key != Key.None && Keyboard.current[key].wasPressedThisFrame)
                     {
                         activeSkill.Activate();
@@ -62,8 +63,12 @@ namespace Code
         {
             skillAsset.Initialize(_context);
             skillAsset.OnAcquire();
-
             _activeSkills.Add(skillAsset);
+
+            if (skillAsset is ActiveSkillBase activeSkill)
+            {
+                _activeSkillViewController.AddActiveSkillView(activeSkill.SkillName, activeSkill.Description, activeSkill.Sprite);
+            }
         }
 
         public void RemoveSkill(SkillBase skillInstance)
