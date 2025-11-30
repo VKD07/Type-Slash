@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Code.GameEvents;
+using CriminalMakers.GameEventHub;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,91 +17,160 @@ namespace Code
         [SerializeField] private float _upSpeed = 0.5f;
         [SerializeField] private float _knockBackForce = 0.2f;
 
-        private Player _player;
         private readonly List<Enemy> _activeEnemies = new List<Enemy>();
-        private Enemy _lockedEnemy;
+        private Enemy _targetEnemy;
+        private bool _canSpawn = true;
+
+        private void Awake()
+        {
+            GameEventHub.Bind(this);
+        }
+
+        private void OnDestroy()
+        {
+            GameEventHub.Unbind(this);
+        }
 
         private IEnumerator Start()
         {
             while (true)
             {
-                yield return new WaitForSeconds(Random.Range(_spawnRange.x, _spawnRange.y));
+                if (_canSpawn)
+                {
+                    yield return new WaitForSeconds(Random.Range(_spawnRange.x, _spawnRange.y));
 
-                Enemy enemy = Instantiate(
-                    _enemyPrefab,
-                    _spawnPoints[Random.Range(0, _spawnPoints.Length)].position,
-                    Quaternion.identity,
-                    _spawnParent
-                );
+                    Enemy enemy = Instantiate(
+                        _enemyPrefab,
+                        _spawnPoints[Random.Range(0, _spawnPoints.Length)].position,
+                        Quaternion.identity,
+                        _spawnParent
+                    );
 
-                
-                enemy.AssignAWord(_words.GetRandomWord());
-                Register(enemy);
+                    enemy.AssignAWord(_words.GetRandomWord());
+                    Register(enemy);
+                }
+                else
+                {
+                    yield return null;
+                }
             }
         }
 
         private void Register(Enemy enemy)
         {
             _activeEnemies.Add(enemy);
-            enemy.OnDeath += e => _activeEnemies.Remove(e);
-            enemy.OnWordFinished += OnEnemyWordFinished;
         }
 
-        private void OnEnemyWordFinished(Enemy enemy)
+        public void PauseSpawning()
         {
-            if (_lockedEnemy == enemy)
+            _canSpawn = false;
+        }
+
+        public void ResumeSpawning()
+        {
+            _canSpawn = true;
+        }
+
+        [OnGameEvent]
+        private void OnEnemyWordFinished(OnEnemyKilledEvent e)
+        {
+            if (_targetEnemy == e.KilledEnemy)
             {
-                _words.AddWord(_lockedEnemy.CurrentWord);
-                _lockedEnemy = null;
+                _activeEnemies.Remove(e.KilledEnemy);
+
+                if (!string.IsNullOrWhiteSpace(_targetEnemy.AssignedWord))
+                    _words.AddWord(_targetEnemy.AssignedWord);
+
+                _targetEnemy = null;
             }
         }
 
-        public bool HandleTypedLetter(char letter, Player player)
+        [OnGameEvent]
+        public void HandleTypedLetter(OnKeyboardPressedEvent pressed)
         {
-            if (_player == null)
+            if (_targetEnemy != null && !_targetEnemy.gameObject.activeSelf)
             {
-                _player = player;
-            }
-            
-            if (_lockedEnemy != null && !_lockedEnemy.gameObject.activeSelf)
-            {
-                _lockedEnemy = null;
+                _targetEnemy = null;
             }
 
-            if (_lockedEnemy == null)
+            char key = char.ToLower(pressed.KeyChar);
+
+            if (_targetEnemy != null)
             {
-                foreach (Enemy e in _activeEnemies)
+                string word = _targetEnemy.CurrentWord;
+                if (!string.IsNullOrEmpty(word) && char.ToLower(word[0]) == key)
                 {
-                    if (e == null)
-                    {
-                        continue;
-                    }
+                    new OnDamageEnemyByLetterEvent(_targetEnemy).Publish(this);
+                    _targetEnemy.TakeDamageBasedOnLetter(pressed.KeyChar);
+                }
+                else
+                {
+                    new OnIncorrectLetterPressed().Publish(this);
+                }
 
-                    if (!e.gameObject.activeInHierarchy)
-                    {
-                        continue;
-                    }
+                return;
+            }
 
-                    string w = e.CurrentWord;
-                    if (w.Length > 0 && char.ToLower(w[0]) == letter)
-                    {
-                        _lockedEnemy = e;
-                        break;
-                    }
+            Enemy matchedEnemy = null;
+
+            foreach (Enemy e in _activeEnemies)
+            {
+                if (e == null)
+                {
+                    continue;
+                }
+
+                if (!e.gameObject.activeInHierarchy)
+                {
+                    continue;
+                }
+
+                string w = e.CurrentWord;
+                if (string.IsNullOrEmpty(w))
+                {
+                    continue;
+                }
+
+                if (char.ToLower(w[0]) == key)
+                {
+                    matchedEnemy = e;
+                    break;
                 }
             }
 
-            if (_lockedEnemy != null && !string.IsNullOrEmpty(_lockedEnemy.CurrentWord) &&
-                char.ToLower(_lockedEnemy.CurrentWord[0]) == letter)
+            if (matchedEnemy != null)
             {
-                _lockedEnemy.KnockBackUp(_knockBackForce);
-                _lockedEnemy.Damage(letter);
-                _player.SetTargetEnemy(_lockedEnemy);
-                new OnDamageEnemyEvent().Publish(this);
-                return true;
+                _targetEnemy = matchedEnemy;
+                new OnDamageEnemyByLetterEvent(_targetEnemy).Publish(this);
+                _targetEnemy.TakeDamageBasedOnLetter(pressed.KeyChar);
+            }
+            else
+            {
+                new OnIncorrectLetterPressed().Publish(this);
+            }
+        }
+
+
+        [OnGameEvent]
+        private void AssignRandomLettersToActiveEnemies(OnOneHitSuperSkillEvent e)
+        {
+            if (e.IsActive)
+            {
+                _canSpawn = false;
+                for (int i = 0; i < _activeEnemies.Count; i++)
+                {
+                    _activeEnemies[i].AssignNewWord(e.AssignedWord[i].ToString());
+                }
+
+                return;
             }
 
-            return false;
+            for (int i = 0; i < _activeEnemies.Count; i++)
+            {
+                _activeEnemies[i].AssignNewWord(_activeEnemies[i].CurrentWord);
+            }
+
+            _canSpawn = true;
         }
     }
 }

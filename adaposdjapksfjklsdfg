@@ -1,0 +1,41 @@
+[33mcommit 9636b6d6b7dc380d345e465f3d9c343e070c4b32[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mskills[m[33m)[m
+Author: VKD07 <vincekyledelgado@gmail.com>
+Date:   Thu Nov 27 04:08:31 2025 +0400
+
+    Added passive active and super skills
+
+[33mcommit b38a404a1a75c0c2b6a21e01788454dda897e0ec[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m, [m[1;32mdev[m[33m)[m
+Author: VKD07 <vincekyledelgado@gmail.com>
+Date:   Wed Nov 26 22:36:18 2025 +0400
+
+    Added Game Event Hub
+
+[33mcommit 437d75437f742391a59d81ae21a46599e938799c[m
+Author: VKD07 <vincekyledelgado@gmail.com>
+Date:   Tue Nov 25 16:26:58 2025 +0400
+
+    Bug fixes
+
+[33mcommit 878ac33f0711c8353fe7ca9a5517757d03915cff[m
+Author: VKD07 <vincekyledelgado@gmail.com>
+Date:   Thu Nov 20 23:07:34 2025 +0400
+
+    Added Unity files
+
+[33mcommit 8b855b38d3b3d8928d37427c551db15df65a953c[m
+Author: VKD07 <vincekyledelgado@gmail.com>
+Date:   Thu Nov 20 21:57:18 2025 +0400
+
+    Added LFS
+
+[33mcommit 75995fabcf9b0dd1d51aba846910e529cba106f3[m
+Author: Vince Delgado <116175769+VKD07@users.noreply.github.com>
+Date:   Thu Nov 20 21:51:07 2025 +0400
+
+    Update .gitignore
+
+[33mcommit 76feba211987a9fa5b152228b03e7af6e3d724a1[m
+Author: Vince Delgado <116175769+VKD07@users.noreply.github.com>
+Date:   Thu Nov 20 21:50:51 2025 +0400
+
+    Initial commit
