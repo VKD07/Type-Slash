@@ -7,7 +7,7 @@ namespace Code.SO
     [CreateAssetMenu (fileName = "OneHitSuperSkill", menuName = "Skills/SuperSkills/OneHitSuperSkill")]
     public class OneHitSuperSkill : SuperSkillBase
     {
-        [SerializeField] private string AssignedWord = "hyperblast";        
+        [SerializeField] private string AssignedWord = "hyperblast";
         protected override void OnSuperStart()
         {
             new OnOneHitSuperSkillEvent(true,AssignedWord).Publish(this);
@@ -15,7 +15,6 @@ namespace Code.SO
 
         protected override void OnSuperTick(float deltaTime, float duration)
         {
-            
         }
 
         protected override void OnSuperEnd()

@@ -1,5 +1,6 @@
 ﻿using Code.GameEvents;
 using Code.Interface;
+using CriminalMakers.GameEventHub;
 using TMPro;
 using UnityEngine;
 
@@ -14,10 +15,23 @@ namespace Code
         private string _assignedWord;
         private string _currentWord;
         private bool _isGrounded;
-        
+        private float _initMoveSpeed;
+
+        private bool _hasChangedSpeed;
 
         public string AssignedWord => _assignedWord;
         public string CurrentWord => _currentWord;
+        
+        private void Awake()
+        {
+            _initMoveSpeed = _moveSpeed;
+            GameEventHub.Bind(this);
+        }
+
+        private void OnDestroy()
+        {
+            GameEventHub.Unbind(this);
+        }
 
         private void OnEnable()
         {
@@ -48,6 +62,7 @@ namespace Code
             {
                 return;
             }
+
             TakeDamage(1);
         }
 
@@ -68,6 +83,19 @@ namespace Code
             _isGrounded = true;
         }
 
+        [OnGameEvent]
+        private void OnModifiedSpeedEvent(OnEnemyMoveSpeedModified e)
+        {
+            _hasChangedSpeed = false;
+            if (e.Reset)
+            {
+                _moveSpeed = _initMoveSpeed;
+                return;
+            }
+            
+            ReduceMoveSpeed(e.NewMoveSpeed);
+        }
+
         public void KnockBack(Vector3 dir, float strength)
         {
             transform.position += dir * strength;
@@ -83,6 +111,20 @@ namespace Code
             {
                 new OnEnemyKilledEvent(this).Publish(this);
                 gameObject.SetActive(false);
+            }
+        }
+
+        public void ReduceMoveSpeed(float val)
+        {
+            if (!_hasChangedSpeed)
+            {
+                _hasChangedSpeed = true;
+                if (_moveSpeed - val <= 0)
+                {
+                    _moveSpeed = 0f;
+                    return;
+                }
+                _moveSpeed -= val;
             }
         }
     }

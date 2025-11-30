@@ -12,16 +12,19 @@ namespace Code
         [SerializeField] private float _maxNumberToTrigger = 10f;
         [SerializeField] private float _gainPerHit = 0.3f;
         [SerializeField] private float _decreaseRate = 0.05f;
+        [SerializeField] private float _decreasePercentageIfIncorrect = 0.30f;
         [SerializeField] private float _superSkillDuration = 5f;
-        
+
         private float _currentMeterVal;
         private bool _superActive;
         private float _superTimer;
         private bool _canBeActivated;
+        private float _initGainPerHit;
 
         private void Awake()
         {
             InitSliderView();
+            _initGainPerHit = _gainPerHit;
             GameEventHub.Bind(this);
         }
 
@@ -38,14 +41,14 @@ namespace Code
                 _superActive = true;
                 _canBeActivated = false;
             }
-            
+
             if (_superActive)
             {
                 _superTimer += Time.deltaTime;
                 float t = 1f - (_superTimer / _superSkillDuration);
                 _currentMeterVal = Mathf.Max(0f, t * _maxNumberToTrigger);
                 _superSkillMeterView.UpdateValue(_currentMeterVal);
-                
+
                 if (_superTimer >= _superSkillDuration)
                 {
                     _superActive = false;
@@ -66,6 +69,7 @@ namespace Code
             {
                 return;
             }
+
             if (_currentMeterVal > 0f)
             {
                 _currentMeterVal -= _decreaseRate * Time.deltaTime;
@@ -88,7 +92,7 @@ namespace Code
             }
 
             _currentMeterVal += _gainPerHit;
-            
+
             if (_currentMeterVal >= _maxNumberToTrigger)
             {
                 _currentMeterVal = _maxNumberToTrigger;
@@ -97,6 +101,39 @@ namespace Code
             }
 
             _superSkillMeterView.UpdateValue(_currentMeterVal);
+        }
+
+        [OnGameEvent] 
+        private void DecreaseMeterByPercentage(OnIncorrectLetterPressed e)
+        {
+            if (_superActive)
+            {
+                return;
+            }
+
+            if (_canBeActivated)
+            {
+                return;
+            }
+
+            float amountToKeep = 1f - _decreasePercentageIfIncorrect;
+            _currentMeterVal *= amountToKeep;
+
+            if (_currentMeterVal < 0f)
+            {
+                _currentMeterVal = 0f;
+            }
+            _superSkillMeterView.UpdateValue(_currentMeterVal);
+        }
+
+        public void IncreaseGainPerHit(float addedValue)
+        {
+            _gainPerHit += addedValue;
+        }
+
+        public void ResetGainPerHit()
+        {
+            _gainPerHit = _initGainPerHit;
         }
     }
 }

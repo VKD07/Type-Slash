@@ -4,6 +4,7 @@ using Code.GameEvents;
 using Code.Interface;
 using CriminalMakers.GameEventHub;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Code
 {
@@ -39,19 +40,30 @@ namespace Code
         private void Update()
         {
             float dt = Time.deltaTime;
+
             foreach (SkillBase skill in _activeSkills)
             {
                 skill.Tick(dt);
+
+                if (skill is ActiveSkillBase activeSkill)
+                {
+                    Key key = activeSkill.ActivationKey;
+
+                    if (key != Key.None && Keyboard.current[key].wasPressedThisFrame)
+                    {
+                        activeSkill.Activate();
+                    }
+                }
             }
         }
 
+
         public void AddSkill(SkillBase skillAsset)
         {
-            SkillBase skillInstance = Instantiate(skillAsset);
-            skillInstance.Initialize(_context);
-            skillInstance.OnAcquire();
+            skillAsset.Initialize(_context);
+            skillAsset.OnAcquire();
 
-            _activeSkills.Add(skillInstance);
+            _activeSkills.Add(skillAsset);
         }
 
         public void RemoveSkill(SkillBase skillInstance)

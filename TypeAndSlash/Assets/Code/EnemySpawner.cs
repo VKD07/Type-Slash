@@ -89,35 +89,67 @@ namespace Code
         public void HandleTypedLetter(OnKeyboardPressedEvent pressed)
         {
             if (_targetEnemy != null && !_targetEnemy.gameObject.activeSelf)
-                _targetEnemy = null;
-
-            if (_targetEnemy == null)
             {
-                foreach (Enemy e in _activeEnemies)
+                _targetEnemy = null;
+            }
+
+            char key = char.ToLower(pressed.KeyChar);
+
+            if (_targetEnemy != null)
+            {
+                string word = _targetEnemy.CurrentWord;
+                if (!string.IsNullOrEmpty(word) && char.ToLower(word[0]) == key)
                 {
-                    if (e == null)
-                        continue;
+                    new OnDamageEnemyByLetterEvent(_targetEnemy).Publish(this);
+                    _targetEnemy.TakeDamageBasedOnLetter(pressed.KeyChar);
+                }
+                else
+                {
+                    new OnIncorrectLetterPressed().Publish(this);
+                }
 
-                    if (!e.gameObject.activeInHierarchy)
-                        continue;
+                return;
+            }
 
-                    string w = e.CurrentWord;
-                    if (w.Length > 0 && char.ToLower(w[0]) == pressed.KeyChar)
-                    {
-                        _targetEnemy = e;
-                        break;
-                    }
+            Enemy matchedEnemy = null;
+
+            foreach (Enemy e in _activeEnemies)
+            {
+                if (e == null)
+                {
+                    continue;
+                }
+
+                if (!e.gameObject.activeInHierarchy)
+                {
+                    continue;
+                }
+
+                string w = e.CurrentWord;
+                if (string.IsNullOrEmpty(w))
+                {
+                    continue;
+                }
+
+                if (char.ToLower(w[0]) == key)
+                {
+                    matchedEnemy = e;
+                    break;
                 }
             }
 
-            if (_targetEnemy != null &&
-                !string.IsNullOrEmpty(_targetEnemy.CurrentWord) &&
-                char.ToLower(_targetEnemy.CurrentWord[0]) == pressed.KeyChar)
+            if (matchedEnemy != null)
             {
+                _targetEnemy = matchedEnemy;
                 new OnDamageEnemyByLetterEvent(_targetEnemy).Publish(this);
                 _targetEnemy.TakeDamageBasedOnLetter(pressed.KeyChar);
             }
+            else
+            {
+                new OnIncorrectLetterPressed().Publish(this);
+            }
         }
+
 
         [OnGameEvent]
         private void AssignRandomLettersToActiveEnemies(OnOneHitSuperSkillEvent e)
@@ -132,11 +164,12 @@ namespace Code
 
                 return;
             }
-            
+
             for (int i = 0; i < _activeEnemies.Count; i++)
             {
                 _activeEnemies[i].AssignNewWord(_activeEnemies[i].CurrentWord);
             }
+
             _canSpawn = true;
         }
     }
