@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Code.Abstracts;
 using Code.GameEvents;
 using Code.Interface;
@@ -16,21 +17,23 @@ namespace Code
 
         private SkillContext _context;
 
-
-        private void OnEnable()
+        private void Awake()
         {
             _context = new SkillContext
             {
                 Player = this.gameObject,
                 SkillHandler = this
             };
+            
+            GameEventHub.Bind(this);
+        }
 
+        private void Start()
+        {
             foreach (SkillBase skill in startingSkills)
             {
                 AddSkill(skill);
             }
-
-            GameEventHub.Bind(this);
         }
 
         private void OnDestroy()
