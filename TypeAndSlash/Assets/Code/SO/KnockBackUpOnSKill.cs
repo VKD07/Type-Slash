@@ -11,7 +11,7 @@ namespace Code.SO
         
         public void OnEnemyDamaged(Enemy enemy)
         {
-            enemy.KnockBack(Vector3.up, knockbackForce);
+            enemy.Move(Vector3.up, knockbackForce);
         }
     }
 }
