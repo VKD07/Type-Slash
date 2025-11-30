@@ -14,8 +14,6 @@ namespace Code
         [SerializeField] private Vector2 _spawnRange;
         [SerializeField] private Enemy _enemyPrefab;
         [SerializeField] private Transform _spawnParent;
-        [SerializeField] private float _upSpeed = 0.5f;
-        [SerializeField] private float _knockBackForce = 0.2f;
 
         private readonly List<Enemy> _activeEnemies = new List<Enemy>();
         private Enemy _targetEnemy;
