@@ -34,13 +34,27 @@ namespace Code.Abstracts
             transform.localScale = Vector3.one * 0.17f;
             _startPos = _rect.anchoredPosition;
             _canvasGroup.blocksRaycasts = false;
+
+            MoveToMouse(eventData);
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            _rect.anchoredPosition += eventData.delta / _canvas.scaleFactor;
+            MoveToMouse(eventData);
         }
 
+        private void MoveToMouse(PointerEventData eventData)
+        {
+            RectTransform parentRect = _rect.parent as RectTransform;
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                parentRect,
+                eventData.position,
+                null,
+                out var localPos);
+
+            _rect.anchoredPosition = localPos;
+        }
         public void OnEndDrag(PointerEventData eventData)
         {
             ResetToDefault();
@@ -52,6 +66,5 @@ namespace Code.Abstracts
             transform.localScale = Vector3.one;
             _rect.anchoredPosition = _startPos;
         }
-        
     }
 }
