@@ -13,41 +13,60 @@ namespace Code.UI
         private void Awake()
         {
             GameEventHub.Bind(this);
+            _typedText.text = string.Empty;
+            _targetWord.text = string.Empty;
         }
 
         private void OnDestroy()
         {
             GameEventHub.Unbind(this);
         }
-        
+
         [OnGameEvent]
         public void SetTargetWord(OnDamageEnemyByLetterEvent e)
         {
-            if (e.Enemy.AssignedWord != _targetWord.text)
+            string newWord = e.Enemy.AssignedWord;
+            if (_targetWord.text != newWord)
             {
-                _typedText.text = "";
-                _typedText.text = e.Enemy.AssignedWord[0].ToString();
+                _typedText.text = string.Empty;
             }
-            _targetWord.text = e.Enemy.AssignedWord;
+
+            _targetWord.text = newWord;
         }
-        
+
         [OnGameEvent]
         public void UpdateTypedText(OnKeyboardPressedEvent e)
         {
-            _typedText.text += e.KeyChar.ToString();
+            if (_targetWord.text.Length == 0)
+            {
+                return;
+            }
+
+            int index = _typedText.text.Length;
+
+            if (index >= _targetWord.text.Length)
+            {
+                return;
+            }
+
+            if (char.ToLowerInvariant(_targetWord.text[index]) == e.KeyChar)
+            {
+                _typedText.text += e.KeyChar;
+            }
         }
 
         [OnGameEvent]
         public void ClearText(OnEnemyKilledEvent e)
         {
-            _typedText.text = "";
-            _targetWord.text = "";
+            _typedText.text = string.Empty;
+            _targetWord.text = string.Empty;
         }
-        
+
         [OnGameEvent]
-        public void DeleteLetter(OnIncorrectLetterPressed e)
+        private void ClearText(OnSuperSkillActive e)
         {
-            _typedText.text = _typedText.text.Substring(0, _typedText.text.Length - 1);
+            _typedText.text = string.Empty;
+            _targetWord.text = string.Empty;
         }
     }
 }

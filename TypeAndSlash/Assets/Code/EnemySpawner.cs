@@ -76,8 +76,11 @@ namespace Code
             {
                 _activeEnemies.Remove(e.KilledEnemy);
 
-                if (!string.IsNullOrWhiteSpace(_targetEnemy.AssignedWord))
+                if (!string.IsNullOrWhiteSpace(_targetEnemy.AssignedWord) &&
+                    !_words.Contains(_targetEnemy.AssignedWord))
+                {
                     _words.AddWord(_targetEnemy.AssignedWord);
+                }
 
                 _targetEnemy = null;
             }

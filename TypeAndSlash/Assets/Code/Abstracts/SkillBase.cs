@@ -1,10 +1,13 @@
-﻿using Code.Interface;
+﻿using System;
+using Code.Interface;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Code.Abstracts
 {
     public abstract class SkillBase : ScriptableObject, ISkill
     {
+        [NonSerialized] public Key ActivationKey;
         public Sprite Sprite;
         public string SkillName;
         public string Description;

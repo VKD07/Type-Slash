@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Code.Abstracts;
 using Code.GameEvents;
 using Code.Interface;
@@ -24,7 +23,7 @@ namespace Code
                 Player = this.gameObject,
                 SkillHandler = this
             };
-            
+
             GameEventHub.Bind(this);
         }
 
@@ -52,7 +51,8 @@ namespace Code
                 if (skill is ActiveSkillBase activeSkill)
                 {
                     Key key = activeSkill.ActivationKey;
-                    _activeSkillViewController.UpdateSkillCooldown(activeSkill.SkillName, activeSkill.GetNormalizedCooldownTimer);
+                    _activeSkillViewController.UpdateSkillCooldown(activeSkill.SkillName,
+                        activeSkill.GetNormalizedCooldownTimer);
                     if (key != Key.None && Keyboard.current[key].wasPressedThisFrame)
                     {
                         activeSkill.Activate();
@@ -61,16 +61,25 @@ namespace Code
             }
         }
 
-
         public void AddSkill(SkillBase skillAsset)
         {
             skillAsset.Initialize(_context);
             skillAsset.OnAcquire();
             _activeSkills.Add(skillAsset);
+            _activeSkillViewController.AddActiveSkillView(skillAsset.SkillName, skillAsset.Description, skillAsset.Sprite);
+        }
 
-            if (skillAsset is ActiveSkillBase activeSkill)
+        public void AddSkill(SkillBase skillAsset, int index)
+        {
+            skillAsset.Initialize(_context);
+            skillAsset.OnAcquire();
+            if (index < _activeSkills.Count)
             {
-                _activeSkillViewController.AddActiveSkillView(activeSkill.SkillName, activeSkill.Description, activeSkill.Sprite);
+                _activeSkills[index] = skillAsset;
+            }
+            else
+            {
+                _activeSkills.Add(skillAsset);
             }
         }
 
@@ -83,6 +92,12 @@ namespace Code
         public void TriggerActiveSkill(SkillBase skill)
         {
             skill.Activate();
+        }
+
+        [OnGameEvent]
+        private void OnChosenSkillEvent(OnChosenSkillEvent e)
+        {
+            AddSkill(e.SkillBase, e.SlotIndex);
         }
 
         [OnGameEvent]

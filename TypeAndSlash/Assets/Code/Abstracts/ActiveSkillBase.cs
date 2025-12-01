@@ -1,18 +1,15 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using System;
+using UnityEngine;
 
 namespace Code.Abstracts
 {
     public abstract class ActiveSkillBase : SkillBase
     {
-        [SerializeField] private Key key;
         [SerializeField] protected float cooldown = 5f;
 
         protected float cooldownTimer = 0f;
         
-        public Key ActivationKey => key;
-
-        public float GetNormalizedCooldownTimer;
+        [NonSerialized] public float GetNormalizedCooldownTimer;
 
         public override void Tick(float deltaTime)
         {

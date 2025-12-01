@@ -6,25 +6,13 @@ namespace Code
     public class ActiveSkillViewController : MonoBehaviour
     {
         [SerializeField] private ActiveSkillView[] _activeSkillViews;
-
-        private void Awake()
-        {
-            foreach (ActiveSkillView activeSkillView in _activeSkillViews)
-            {
-                activeSkillView.gameObject.SetActive(false);
-            }
-        }
-
+        
         public void AddActiveSkillView(string skillName, string description, Sprite skillSprite)
         {
             foreach (ActiveSkillView activeSkillView in _activeSkillViews)
             {
-                if (!activeSkillView.gameObject.activeSelf)
-                {
-                    activeSkillView.gameObject.SetActive(true);
-                    activeSkillView.Setup(skillName, description, skillSprite);
-                    break;
-                }
+                activeSkillView.Setup(skillName, description, skillSprite);
+                break;
             }
         }
 

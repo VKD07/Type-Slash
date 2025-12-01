@@ -46,6 +46,10 @@ namespace Code
                     if (keyName.Length == 1)
                     {
                         char letter = char.ToLower(keyName[0]);
+                        if(char.IsDigit(letter))
+                        {
+                            continue;
+                        }
                         new OnKeyboardPressedEvent(letter).Publish(this);
                     }
                 }
