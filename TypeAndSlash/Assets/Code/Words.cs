@@ -14,7 +14,7 @@ namespace Code
             "vent", "warp", "xeno", "yank", "zince"
         };
 
-        [SerializeField] private List<string> runtimeWords = new List<string>();
+        [SerializeField] private List<string> _runtimeWords = new List<string>();
 
         private void OnEnable()
         {
@@ -23,43 +23,51 @@ namespace Code
 
         public string GetRandomWord()
         {
-            if (runtimeWords.Count == 0)
+            if (_runtimeWords.Count == 0)
             {
                 ResetToDefault();
             }
 
-            int index = Random.Range(0, runtimeWords.Count);
-            string word = runtimeWords[index];
-            runtimeWords.RemoveAt(index);
+            int index = Random.Range(0, _runtimeWords.Count);
+            string word = _runtimeWords[index];
+            _runtimeWords.RemoveAt(index);
             return word;
         }
 
         public void AddWord(string newWord)
         {
             if (string.IsNullOrWhiteSpace(newWord))
-                return;
-
-            if (!runtimeWords.Contains(newWord))
             {
-                runtimeWords.Add(newWord);
+                return;
+            }
+
+            if (!_runtimeWords.Contains(newWord))
+            {
+                _runtimeWords.Add(newWord);
+            }
+        }
+        
+        public void RemoveWordBasedoOnFirstLetter(char letter)
+        {
+            for (int i = 0; i < _runtimeWords.Count; i++)
+            {
+                if (_runtimeWords[i][0] == letter)
+                {
+                    _runtimeWords.RemoveAt(i);
+                }
             }
         }
 
         private void ResetToDefault()
         {
-            runtimeWords = new List<string>(_defaultWords);
+            _runtimeWords = new List<string>(_defaultWords);
             RemoveDuplicates();
         }
 
         private void RemoveDuplicates()
         {
-            HashSet<string> unique = new HashSet<string>(runtimeWords);
-            runtimeWords = new List<string>(unique);
-        }
-
-        public bool Contains(string word)
-        {
-            return runtimeWords.Contains(word);
+            HashSet<string> unique = new HashSet<string>(_runtimeWords);
+            _runtimeWords = new List<string>(unique);
         }
     }
 }

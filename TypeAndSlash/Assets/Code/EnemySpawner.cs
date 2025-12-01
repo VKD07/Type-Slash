@@ -74,15 +74,14 @@ namespace Code
         {
             if (_targetEnemy == e.KilledEnemy)
             {
-                _activeEnemies.Remove(e.KilledEnemy);
-
-                if (!string.IsNullOrWhiteSpace(_targetEnemy.AssignedWord) &&
-                    !_words.Contains(_targetEnemy.AssignedWord))
-                {
-                    _words.AddWord(_targetEnemy.AssignedWord);
-                }
-
                 _targetEnemy = null;
+            }
+
+            _activeEnemies.Remove(e.KilledEnemy);
+
+            if (!string.IsNullOrWhiteSpace(e.KilledEnemy.AssignedWord))
+            {
+                _words.AddWord(e.KilledEnemy.AssignedWord);
             }
         }
 
@@ -158,6 +157,12 @@ namespace Code
             if (e.IsActive)
             {
                 _canSpawn = false;
+
+                for (int i = 0; i < e.AssignedWord.Length; i++)
+                {
+                    _words.RemoveWordBasedoOnFirstLetter(e.AssignedWord[i]);
+                }
+
                 for (int i = 0; i < _activeEnemies.Count; i++)
                 {
                     _activeEnemies[i].AssignNewWord(e.AssignedWord[i].ToString());
