@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Code.GameEvents;
+using UnityEngine;
 namespace Code
 {
     public class EnemyKiller : MonoBehaviour
@@ -19,6 +20,7 @@ namespace Code
             
             if (other.gameObject.GetComponent<Enemy>() != null)
             {
+                new OnEnemyKilledEvent(other.gameObject.GetComponent<Enemy>()).Publish(this);
                 other.gameObject.SetActive(false);
             }
         }

@@ -58,8 +58,11 @@ namespace Code.UI
         [OnGameEvent]
         public void ClearText(OnEnemyKilledEvent e)
         {
-            _typedText.text = string.Empty;
-            _targetWord.text = string.Empty;
+            if (e.KilledEnemy.AssignedWord == _targetWord.text)
+            {
+                _typedText.text = string.Empty;
+                _targetWord.text = string.Empty;
+            }
         }
 
         [OnGameEvent]
