@@ -26,6 +26,7 @@ namespace Code.UI
         public void SetTargetWord(OnDamageEnemyByLetterEvent e)
         {
             string newWord = e.Enemy.AssignedWord;
+
             if (_targetWord.text != newWord)
             {
                 _typedText.text = string.Empty;

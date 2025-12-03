@@ -67,6 +67,7 @@ namespace Code
         public void ResumeSpawning()
         {
             _canSpawn = true;
+            
         }
 
         [OnGameEvent]
@@ -84,7 +85,7 @@ namespace Code
                 _words.AddWord(e.KilledEnemy.AssignedWord);
             }
         }
-
+        
         [OnGameEvent]
         public void HandleTypedLetter(OnKeyboardPressedEvent pressed)
         {

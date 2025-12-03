@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "Player",
+    "maps": [
+        {
+            "name": "Combat",
+            "id": "94180ae6-55f2-44f8-84ab-450a5a953e95",
+            "actions": [
+                {
+                    "name": "Retreat",
+                    "type": "Button",
+                    "id": "b7b59c7c-d5ec-4881-a3b5-b1faf5712d54",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c8ded7be-035d-4db9-ab03-0f5567014cc8",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Retreat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

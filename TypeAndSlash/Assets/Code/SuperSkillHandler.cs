@@ -35,7 +35,7 @@ namespace Code
 
         private void Update()
         {
-            if (_canBeActivated && Keyboard.current.backspaceKey.wasPressedThisFrame)
+            if (_canBeActivated && Keyboard.current.digit0Key.wasPressedThisFrame)
             {
                 new OnSuperSkillActive(true).Publish(this);
                 _superActive = true;
