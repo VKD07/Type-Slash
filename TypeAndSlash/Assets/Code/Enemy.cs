@@ -1,20 +1,19 @@
-﻿using System;
+﻿using Code.Abstracts;
 using Code.GameEvents;
 using Code.Interface;
 using CriminalMakers.GameEventHub;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.UI;
 
 namespace Code
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Enemy : MonoBehaviour, IKnockable, IDamageable
+    public class Enemy : Damageable, IKnockable, IDamageDealer
     {
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private float _moveSpeed = 10f;
         private Rigidbody2D _rb;
-        private EnemyKiller _enemyKiller;
+        private Base _base;
         private string _assignedWord;
         private string _currentWord;
         private bool _isGrounded;
@@ -39,7 +38,7 @@ namespace Code
 
         private void OnEnable()
         {
-            _enemyKiller = FindAnyObjectByType<EnemyKiller>();
+            _base = FindAnyObjectByType<Base>();
         }
 
         public void AssignAWord(string word)
@@ -72,9 +71,9 @@ namespace Code
 
         private void FixedUpdate()
         {
-            if (_enemyKiller != null && _isGrounded)
+            if (_base != null && _isGrounded)
             {
-                Vector2 direction = (_enemyKiller.transform.position - transform.position).normalized;
+                Vector2 direction = (_base.transform.position - transform.position).normalized;
                 _rb.MovePosition(_rb.position + direction * _moveSpeed * Time.fixedDeltaTime);
             }
         }
@@ -119,17 +118,22 @@ namespace Code
             transform.position += dir * strength;
         }
 
-        public void TakeDamage(int damage)
+        public override void TakeDamage(float damage)
         {
-            int remove = Mathf.Min(damage, _currentWord.Length);
+            int remove = Mathf.Min((int)damage, _currentWord.Length);
             _currentWord = _currentWord.Substring(remove);
             _text.text = _currentWord;
 
             if (_currentWord.Length == 0)
             {
                 new OnEnemyKilledEvent(this).Publish(this);
-                gameObject.SetActive(false);
+                Die();
             }
+        }
+
+        protected override void Die()
+        {
+            gameObject.SetActive(false);
         }
 
         public void ReduceMoveSpeed(float val)
@@ -146,5 +150,7 @@ namespace Code
                 _moveSpeed -= val;
             }
         }
+
+        public float Damage => 10;
     }
 }

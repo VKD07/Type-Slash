@@ -1,6 +1,7 @@
 ﻿using Code.GameEvents;
 using CriminalMakers.GameEventHub;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Code
 {
@@ -31,6 +32,15 @@ namespace Code
         private void Update()
         {
             FollowTarget();
+
+            // if (Keyboard.current.backspaceKey.wasPressedThisFrame)
+            // {
+            //     float randomVal = Random.value;
+            //     
+            //     
+            //     _rigidbody.AddForce((randomVal > 0.5f ? Vector2.left : Vector2.right) * 20f, ForceMode2D.Impulse);
+            // }
+
         }
 
         public void SetTarget(Transform target)
