@@ -9,15 +9,19 @@ namespace Code
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private Words _words;
         [SerializeField] private Transform[] _spawnPoints;
         [SerializeField] private Vector2 _spawnRange;
         [SerializeField] private Enemy _enemyPrefab;
         [SerializeField] private Transform _spawnParent;
+        [SerializeField] private Level[] _levels;
 
         private readonly List<Enemy> _activeEnemies = new List<Enemy>();
+        private Words _currentWords;
         private Enemy _targetEnemy;
         private bool _canSpawn = true;
+        private int _currentLevelIndex;
+        private int _enemiesSpawnedThisLevel;
+        private int _enemiesKilledThisLevel;
 
         private void Awake()
         {
@@ -31,11 +35,17 @@ namespace Code
 
         private IEnumerator Start()
         {
+            if (_levels != null && _levels.Length > 0)
+            {
+                _currentWords = _levels[_currentLevelIndex].words;
+            }
+
             while (true)
             {
-                if (_canSpawn)
+                if (_canSpawn && CanSpawnEnemy())
                 {
-                    yield return new WaitForSeconds(Random.Range(_spawnRange.x, _spawnRange.y));
+                    Vector2 range = GetCurrentSpawnRange();
+                    yield return new WaitForSeconds(Random.Range(range.x, range.y));
 
                     Enemy enemy = Instantiate(
                         _enemyPrefab,
@@ -44,14 +54,46 @@ namespace Code
                         _spawnParent
                     );
 
-                    enemy.AssignAWord(_words.GetRandomWord());
+                    enemy.AssignAWord(_currentWords.GetRandomWord());
                     Register(enemy);
+                    _enemiesSpawnedThisLevel++;
                 }
                 else
                 {
                     yield return null;
                 }
             }
+        }
+
+        private Vector2 GetCurrentSpawnRange()
+        {
+            if (_levels == null || _levels.Length == 0)
+            {
+                return _spawnRange;
+            }
+
+            if (_currentLevelIndex < 0 || _currentLevelIndex >= _levels.Length)
+            {
+                return _spawnRange;
+            }
+
+            return _levels[_currentLevelIndex].spawnTimeRange;
+        }
+
+        private bool CanSpawnEnemy()
+        {
+            if (_levels == null || _levels.Length == 0)
+            {
+                return true;
+            }
+
+            if (_currentLevelIndex < 0 || _currentLevelIndex >= _levels.Length)
+            {
+                return false;
+            }
+
+            Level level = _levels[_currentLevelIndex];
+            return _enemiesSpawnedThisLevel < level.enemiesToSpawn;
         }
 
         private void Register(Enemy enemy)
@@ -67,7 +109,23 @@ namespace Code
         public void ResumeSpawning()
         {
             _canSpawn = true;
-            
+        }
+
+        private void LevelUp()
+        {
+            Debug.Log("LEVEL UP!");
+            _currentLevelIndex++;
+            _enemiesSpawnedThisLevel = 0;
+            _enemiesKilledThisLevel = 0;
+
+            if (_currentLevelIndex < _levels.Length)
+            {
+                _currentWords = _levels[_currentLevelIndex].words;
+            }
+            else
+            {
+                _canSpawn = false;
+            }
         }
 
         [OnGameEvent]
@@ -82,10 +140,22 @@ namespace Code
 
             if (!string.IsNullOrWhiteSpace(e.KilledEnemy.AssignedWord))
             {
-                _words.AddWord(e.KilledEnemy.AssignedWord);
+                _currentWords.AddWord(e.KilledEnemy.AssignedWord);
+            }
+
+            if (_levels != null && _levels.Length > 0 && _currentLevelIndex >= 0 && _currentLevelIndex < _levels.Length)
+            {
+                _enemiesKilledThisLevel++;
+
+                Level level = _levels[_currentLevelIndex];
+
+                if (_enemiesKilledThisLevel >= level.enemiesToSpawn)
+                {
+                    LevelUp();
+                }
             }
         }
-        
+
         [OnGameEvent]
         public void HandleTypedLetter(OnKeyboardPressedEvent pressed)
         {
@@ -151,7 +221,6 @@ namespace Code
             }
         }
 
-
         [OnGameEvent]
         private void AssignRandomLettersToActiveEnemies(OnOneHitSuperSkillEvent e)
         {
@@ -161,7 +230,7 @@ namespace Code
 
                 for (int i = 0; i < e.AssignedWord.Length; i++)
                 {
-                    _words.RemoveWordBasedoOnFirstLetter(e.AssignedWord[i]);
+                    _currentWords.RemoveWordBasedoOnFirstLetter(e.AssignedWord[i]);
                 }
 
                 for (int i = 0; i < _activeEnemies.Count; i++)
@@ -179,5 +248,13 @@ namespace Code
 
             _canSpawn = true;
         }
+    }
+
+    [System.Serializable]
+    public class Level
+    {
+        public int enemiesToSpawn;
+        public Vector2 spawnTimeRange;
+        public Words words;
     }
 }
