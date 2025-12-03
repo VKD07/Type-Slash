@@ -2,6 +2,7 @@
 using Code.Abstracts;
 using Code.GameEvents;
 using Code.Interface;
+using Code.SO;
 using CriminalMakers.GameEventHub;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -66,6 +67,11 @@ namespace Code
             skillAsset.Initialize(_context);
             skillAsset.OnAcquire();
             _activeSkills.Add(skillAsset);
+
+            if (skillAsset is OneHitSuperSkill)
+            {
+                return;
+            }
             _activeSkillViewController.AddActiveSkillView(skillAsset.SkillName, skillAsset.Description, skillAsset.Sprite);
         }
 

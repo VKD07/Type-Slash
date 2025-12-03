@@ -105,15 +105,16 @@ namespace Code
         {
             _canSpawn = false;
         }
-
-        public void ResumeSpawning()
+        
+        
+        [OnGameEvent]
+        public void ResumeSpawning(OnChosenSkillEvent e)
         {
             _canSpawn = true;
         }
 
         private void LevelUp()
         {
-            Debug.Log("LEVEL UP!");
             _currentLevelIndex++;
             _enemiesSpawnedThisLevel = 0;
             _enemiesKilledThisLevel = 0;
@@ -126,6 +127,9 @@ namespace Code
             {
                 _canSpawn = false;
             }
+            
+            PauseSpawning();
+            new OnLeveUpEvent().Publish(this);
         }
 
         [OnGameEvent]
@@ -248,6 +252,8 @@ namespace Code
 
             _canSpawn = true;
         }
+        
+        
     }
 
     [System.Serializable]

@@ -15,6 +15,7 @@ namespace Code.Abstracts
         protected virtual void Awake()
         {
             _rect = GetComponent<RectTransform>();
+            _startPos = _rect.anchoredPosition;
         }
 
         protected void OnDisable()
@@ -32,7 +33,6 @@ namespace Code.Abstracts
         public void OnBeginDrag(PointerEventData eventData)
         {
             transform.localScale = Vector3.one * 0.17f;
-            _startPos = _rect.anchoredPosition;
             _canvasGroup.blocksRaycasts = false;
 
             MoveToMouse(eventData);

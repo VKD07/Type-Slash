@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Code.Abstracts;
 using Code.GameEvents;
 using CriminalMakers.GameEventHub;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 namespace Code.UI
 {
@@ -32,7 +34,8 @@ namespace Code.UI
             }
         }
 
-        public void ShowSkillOptions()
+        [OnGameEvent]
+        public void ShowSkillOptions(OnLeveUpEvent e)
         {
             if (_skills.Count < 3)
             {
@@ -55,19 +58,19 @@ namespace Code.UI
             }
         }
 
-        private void Update()
-        {
-            if (Keyboard.current.escapeKey.wasPressedThisFrame)
-            {
-                ShowSkillOptions();
-            }
-        }
-
         [OnGameEvent]
         private void OnChosenSkill(OnChosenSkillEvent e)
         {
             SetActiveOptions(false);
             _skills.Remove(e.SkillBase);
+        }
+
+        private void Update()
+        {
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                ShowSkillOptions(new OnLeveUpEvent());
+            }
         }
     }
 }
