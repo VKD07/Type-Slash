@@ -1,6 +1,4 @@
-﻿using Code.GameEvents;
-using CriminalMakers.GameEventHub;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace Code.UI
@@ -9,34 +7,21 @@ namespace Code.UI
     {
         [SerializeField] private TextMeshProUGUI _typedText;
         [SerializeField] private TextMeshProUGUI _targetWord;
+        [SerializeField] private Transform _wordPanel;
 
         private void Awake()
         {
-            GameEventHub.Bind(this);
             _typedText.text = string.Empty;
             _targetWord.text = string.Empty;
         }
 
-        private void OnDestroy()
+        public void SetTargetWord(string word)
         {
-            GameEventHub.Unbind(this);
+            _targetWord.text = word;
+            _typedText.text = string.Empty;
         }
 
-        [OnGameEvent]
-        public void SetTargetWord(OnDamageEnemyByLetterEvent e)
-        {
-            string newWord = e.Enemy.AssignedWord;
-
-            if (_targetWord.text != newWord)
-            {
-                _typedText.text = string.Empty;
-            }
-
-            _targetWord.text = newWord;
-        }
-
-        [OnGameEvent]
-        public void UpdateTypedText(OnKeyboardPressedEvent e)
+        public void UpdateTypedText(char typedChar)
         {
             if (_targetWord.text.Length == 0)
             {
@@ -50,27 +35,17 @@ namespace Code.UI
                 return;
             }
 
-            if (char.ToLowerInvariant(_targetWord.text[index]) == e.KeyChar)
+            if (char.ToLowerInvariant(_targetWord.text[index]) == char.ToLowerInvariant(typedChar))
             {
-                _typedText.text += e.KeyChar;
+                _typedText.text += typedChar;
             }
         }
 
-        [OnGameEvent]
-        public void ClearText(OnEnemyKilledEvent e)
+        public void SetParent(Transform parent)
         {
-            if (e.KilledEnemy.AssignedWord == _targetWord.text)
-            {
-                _typedText.text = string.Empty;
-                _targetWord.text = string.Empty;
-            }
-        }
-
-        [OnGameEvent]
-        private void ClearText(OnSuperSkillActive e)
-        {
-            _typedText.text = string.Empty;
-            _targetWord.text = string.Empty;
+            _wordPanel.SetParent(parent);
+            _wordPanel.localPosition = new Vector3(0.43f, 0.73f, 0f);
+            _wordPanel.gameObject.SetActive(true);
         }
     }
 }

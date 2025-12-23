@@ -29,5 +29,13 @@ namespace Code
             transform.position = position;
             _particles[Random.Range(0, _particles.Length)].Play();
         }
+
+        public void PlayAllParticles()
+        {
+            foreach (ParticleSystem particle in _particles)
+            {
+                particle.Play();
+            }
+        }
     }
 }
